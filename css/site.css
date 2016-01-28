@@ -1,0 +1,9 @@
+.notification-element.ng-leave{
+    animation: slideOutRight 1s;
+}
+.notification-element.ng-enter{
+    animation: slideInLeft 1s;
+}
+.notification-element.ng-move{
+    animation: slideOutDown 1s;
+}

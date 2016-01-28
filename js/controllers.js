@@ -26,10 +26,14 @@ angular.module('adminlte.controllers',[])
         }
 
 }])
-    .controller('HomeController',['$scope','notify',function($scope,notify){
+    .controller('HomeController',['$scope','notify','$interval',function($scope,notify,$interval){
         $scope.add_notification = function(msg){
             notify(msg,'info');
         }
+        function add_random_not(){
+            notify(Math.random(),'info');
+        }
+        $interval(add_random_not,10000);
 
     }])
     .controller('SecondPageController',['$scope',function($scope){

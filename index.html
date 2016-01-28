@@ -23,7 +23,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
         apply the skin class to the body tag so the changes take effect.
   -->
   <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
+  <!-- ngAnimate css -->
+  <link rel="stylesheet" href="css/site.css">
 
+  <!-- animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css"/>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -52,7 +56,7 @@ desired effect
 |---------------------------------------------------------|
 -->
 <body class="hold-transition skin-blue sidebar-mini" ng-app="adminlte">
-<div class="wrapper">
+<div class="wrapper" ng-controller="PageController">
 
   <!-- Main Header -->
   <header class="main-header">
@@ -111,7 +115,7 @@ desired effect
           <!-- /.messages-menu -->
 
           <!-- Notifications Menu -->
-          <li class="dropdown notifications-menu" ng-controller="PageController">
+          <li class="dropdown notifications-menu">
             <!-- Menu toggle button -->
             <a href="" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
@@ -122,9 +126,9 @@ desired effect
               <li>
                 <!-- Inner Menu: contains the notifications -->
                 <ul class="menu">
-                  <li ng-repeat="notification in notifications"><!-- start notification -->
+                  <li ng-class="'notification-element '+notification.class " ng-repeat="notification in notifications" ngAnimate><!-- start notification -->
                     <a ng-click="clear_notification($index,$event)">
-                      <i class="fa fa-users text-aqua"></i> {{ notification.notification }}
+                      <i class="fa fa-envelope"></i> {{ notification.notification }}
                     </a>
                   </li>
                   <!-- end notification -->
@@ -252,7 +256,7 @@ desired effect
       <!-- /.search form -->
 
       <!-- Sidebar Menu -->
-      <ul class="sidebar-menu" ng-controller='PageController'>
+      <ul class="sidebar-menu">
         <li class="header">MENU</li>
         <!-- Optionally, you can add icons to the links -->
         <li ng-repeat="route in link_routes" ng-class="(route.$$hashKey==current_route.$$hashKey && 'active') || ''">
@@ -388,8 +392,12 @@ desired effect
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.min.js"></script>
 <!-- Angular Router -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular-route.min.js"></script>
+<!-- Angular Animate -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular-animate.min.js"></script>
 <!-- Controllers -->
 <script src="js/controllers.js"></script>
+<!-- Filters -->
+<script src="js/filters.js"></script>
 <!-- App -->
 <script src="js/app.js"></script>
 
