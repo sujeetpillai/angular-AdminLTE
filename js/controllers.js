@@ -2,14 +2,7 @@
  * Created by sujeet on 1/28/16.
  */
 angular.module('adminlte.controllers',[])
-
-.controller('HomeController',['$scope',function($scope){
-
-    }])
-.controller('PageController',['$scope',function($scope){
-
-    }])
-.controller('NavController',['$scope','$route',function($scope,$route){
+.controller('PageController',['$scope','$route','notify',function($scope,$route,notify){
         $scope.link_routes = [];
         //console.log($route.routes);
         for(var r in $route.routes){
@@ -24,4 +17,21 @@ angular.module('adminlte.controllers',[])
             $scope.current_route = current;
         })
 
+        $scope.$watch(function(){return notify.get_notifications()},function(notifications){
+            $scope.notifications = notifications;
+        })
+        $scope.clear_notification = function(index,event){
+            notify.flush_notification(index);
+            event.stopPropagation();
+        }
+
 }])
+    .controller('HomeController',['$scope','notify',function($scope,notify){
+        $scope.add_notification = function(msg){
+            notify(msg,'info');
+        }
+
+    }])
+    .controller('SecondPageController',['$scope',function($scope){
+
+    }])

@@ -111,26 +111,25 @@ desired effect
           <!-- /.messages-menu -->
 
           <!-- Notifications Menu -->
-          <li class="dropdown notifications-menu">
+          <li class="dropdown notifications-menu" ng-controller="PageController">
             <!-- Menu toggle button -->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <a href="" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">10</span>
+              <span class="label label-warning">{{ notifications.length }} </span>
             </a>
             <ul class="dropdown-menu">
-              <li class="header">You have 10 notifications</li>
+              <li class="header">You have {{ notifications.length }} notifications</li>
               <li>
                 <!-- Inner Menu: contains the notifications -->
                 <ul class="menu">
-                  <li><!-- start notification -->
-                    <a href="#">
-                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                  <li ng-repeat="notification in notifications"><!-- start notification -->
+                    <a ng-click="clear_notification($index,$event)">
+                      <i class="fa fa-users text-aqua"></i> {{ notification.notification }}
                     </a>
                   </li>
                   <!-- end notification -->
                 </ul>
               </li>
-              <li class="footer"><a href="#">View all</a></li>
             </ul>
           </li>
           <!-- Tasks Menu -->
@@ -253,7 +252,7 @@ desired effect
       <!-- /.search form -->
 
       <!-- Sidebar Menu -->
-      <ul class="sidebar-menu" ng-controller='NavController'>
+      <ul class="sidebar-menu" ng-controller='PageController'>
         <li class="header">MENU</li>
         <!-- Optionally, you can add icons to the links -->
         <li ng-repeat="route in link_routes" ng-class="(route.$$hashKey==current_route.$$hashKey && 'active') || ''">
@@ -268,7 +267,7 @@ desired effect
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header" ng-controller='NavController'>
+    <section class="content-header" ng-controller='PageController'>
       <h1>
         {{ current_route.$$route.title }}
         <small>{{ current_route.$$route.subtitle }}</small>
