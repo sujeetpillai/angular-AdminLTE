@@ -51,7 +51,7 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" ng-app="adminlte">
 <div class="wrapper">
 
   <!-- Main Header -->
@@ -253,17 +253,11 @@ desired effect
       <!-- /.search form -->
 
       <!-- Sidebar Menu -->
-      <ul class="sidebar-menu">
+      <ul class="sidebar-menu" ng-controller='NavController'>
         <li class="header">HEADER</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
-        <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
-        <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a href="#">Link in level 2</a></li>
-            <li><a href="#">Link in level 2</a></li>
-          </ul>
+        <li ng-repeat="route in link_routes" ng-class="(route.$$hashKey==current.$$hashKey && 'active') || ''">
+          <a ng-href="#{{ route.originalPath }}"><i class="fa fa-{{ route.icon || 'link' }}"></i> <span>{{ route.title }}</span></a>
         </li>
       </ul>
       <!-- /.sidebar-menu -->
@@ -289,6 +283,7 @@ desired effect
     <section class="content">
 
       <!-- Your Page Content Here -->
+      <ng-view></ng-view>
 
     </section>
     <!-- /.content -->
@@ -390,6 +385,16 @@ desired effect
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/app.min.js"></script>
+<!-- Angular -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.min.js"></script>
+<!-- Angular Router -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular-route.min.js"></script>
+<!-- Controllers -->
+<script src="js/controllers.js"></script>
+<!-- App -->
+<script src="js/app.js"></script>
+
+
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
