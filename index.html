@@ -254,9 +254,9 @@ desired effect
 
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu" ng-controller='NavController'>
-        <li class="header">HEADER</li>
+        <li class="header">MENU</li>
         <!-- Optionally, you can add icons to the links -->
-        <li ng-repeat="route in link_routes" ng-class="(route.$$hashKey==current.$$hashKey && 'active') || ''">
+        <li ng-repeat="route in link_routes" ng-class="(route.$$hashKey==current_route.$$hashKey && 'active') || ''">
           <a ng-href="#{{ route.originalPath }}"><i class="fa fa-{{ route.icon || 'link' }}"></i> <span>{{ route.title }}</span></a>
         </li>
       </ul>
@@ -268,10 +268,10 @@ desired effect
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
+    <section class="content-header" ng-controller='NavController'>
       <h1>
-        Page Header
-        <small>Optional description</small>
+        {{ current_route.$$route.title }}
+        <small>{{ current_route.$$route.subtitle }}</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>

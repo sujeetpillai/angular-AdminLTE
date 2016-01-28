@@ -11,7 +11,7 @@ angular.module('adminlte.controllers',[])
     }])
 .controller('NavController',['$scope','$route',function($scope,$route){
         $scope.link_routes = [];
-        console.log($route.routes);
+        //console.log($route.routes);
         for(var r in $route.routes){
             var route = $route.routes[r];
             if(!route.redirectTo && r){
@@ -20,8 +20,8 @@ angular.module('adminlte.controllers',[])
         }
 
         $scope.$on('$routeChangeSuccess',function(event,current,previous){
-            console.log($scope.current);
-            $scope.current = current;
+            //console.log($scope.current);
+            $scope.current_route = current;
         })
 
 }])
