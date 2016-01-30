@@ -3,6 +3,12 @@
  */
 var app = angular.module('adminlte',['adminlte.controllers','adminlte.filters','ngRoute','ngAnimate']);
 
+// Constants
+app.constant('siteinfo',{
+   company:'Company'
+});
+
+// Routing
 app.config(['$routeProvider',function($routeProvider){
     $routeProvider.when('/',{controller:'HomeController',templateUrl:'partials/home.html',title:'Home',icon:'home'}),
     $routeProvider.when('/page',{controller:'SecondPageController',templateUrl:'partials/page.html',title:'Page',icon:'dashboard'}),
@@ -10,6 +16,7 @@ app.config(['$routeProvider',function($routeProvider){
 
 }]);
 
+// Notification Service
 app.factory('notify',[function(){
     var notifications = [];
     function notify(notification,category){
