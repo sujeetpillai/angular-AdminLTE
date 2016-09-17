@@ -1,8 +1,8 @@
 /**
  * Created by sujeet on 1/28/16.
  */
-angular.module('adminlte.controllers',[])
-.controller('PageController',['$scope','$route','notify','siteinfo',function($scope,$route,notify,siteinfo){
+angular.module('adminlte.controllers',['adminlte.directives'])
+.controller('DashboardController',['$scope','$route','notify','siteinfo',function($scope,$route,notify,siteinfo){
         // Access to global site information
         $scope.siteinfo = siteinfo;
 

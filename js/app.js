@@ -1,7 +1,7 @@
 /**
  * Created by sujeet on 1/28/16.
  */
-var app = angular.module('adminlte',['adminlte.controllers','adminlte.filters','ngRoute','ngAnimate']);
+var app = angular.module('adminlte',['adminlte.controllers','adminlte.filters','adminlte.directives','ngRoute','ngAnimate']);
 
 // Constants
 app.constant('siteinfo',{
@@ -11,7 +11,15 @@ app.constant('siteinfo',{
 // Routing
 app.config(['$routeProvider',function($routeProvider){
     $routeProvider.when('/',{controller:'HomeController',templateUrl:'partials/home.html',title:'Home',icon:'home'}),
-    $routeProvider.when('/page',{controller:'SecondPageController',templateUrl:'partials/page.html',title:'Page',icon:'dashboard'}),
+    $routeProvider.when('/page',
+        {
+            controller:'SecondPageController',
+            templateUrl:'partials/page.html',
+            title:'Title',
+            subtitle:'Subtitle',
+            icon:'dashboard'
+        }
+    ),
         $routeProvider.otherwise({redirectTo:'/'})
 
 }]);
